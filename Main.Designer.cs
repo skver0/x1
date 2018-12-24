@@ -35,13 +35,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.title = new System.Windows.Forms.Label();
             this.nt1 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel_StuffHere = new System.Windows.Forms.Panel();
             this.p_Media = new System.Windows.Forms.Panel();
             this.p_Forward = new System.Windows.Forms.PictureBox();
             this.p_Back = new System.Windows.Forms.PictureBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.seperator = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
+            this.panel_StuffHere.SuspendLayout();
             this.p_Media.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.p_Forward)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.p_Back)).BeginInit();
@@ -57,7 +57,7 @@
             this.time.AutoSize = true;
             this.time.Font = new System.Drawing.Font("Consolas", 13F);
             this.time.ForeColor = System.Drawing.Color.White;
-            this.time.Location = new System.Drawing.Point(1848, 9);
+            this.time.Location = new System.Drawing.Point(671, 9);
             this.time.Name = "time";
             this.time.Size = new System.Drawing.Size(60, 22);
             this.time.TabIndex = 0;
@@ -91,14 +91,14 @@
             this.nt1.Text = "x1 Status";
             this.nt1.Visible = true;
             // 
-            // panel1
+            // panel_StuffHere
             // 
-            this.panel1.Controls.Add(this.p_Media);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Location = new System.Drawing.Point(1692, 1);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(162, 38);
-            this.panel1.TabIndex = 4;
+            this.panel_StuffHere.Controls.Add(this.p_Media);
+            this.panel_StuffHere.Controls.Add(this.seperator);
+            this.panel_StuffHere.Location = new System.Drawing.Point(515, 1);
+            this.panel_StuffHere.Name = "panel_StuffHere";
+            this.panel_StuffHere.Size = new System.Drawing.Size(162, 38);
+            this.panel_StuffHere.TabIndex = 4;
             // 
             // p_Media
             // 
@@ -132,16 +132,16 @@
             this.p_Back.TabStop = false;
             this.p_Back.Click += new System.EventHandler(this.p_Back_Click);
             // 
-            // label3
+            // seperator
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Consolas", 13F);
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(140, 8);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(20, 22);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "|";
+            this.seperator.AutoSize = true;
+            this.seperator.Font = new System.Drawing.Font("Consolas", 13F);
+            this.seperator.ForeColor = System.Drawing.Color.White;
+            this.seperator.Location = new System.Drawing.Point(140, 8);
+            this.seperator.Name = "seperator";
+            this.seperator.Size = new System.Drawing.Size(20, 22);
+            this.seperator.TabIndex = 5;
+            this.seperator.Text = "|";
             // 
             // label4
             // 
@@ -159,10 +159,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.ClientSize = new System.Drawing.Size(1920, 40);
+            this.ClientSize = new System.Drawing.Size(739, 40);
             this.Controls.Add(this.title);
             this.Controls.Add(this.time);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel_StuffHere);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label4);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -174,8 +174,8 @@
             this.Text = "x1";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.Main_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.panel_StuffHere.ResumeLayout(false);
+            this.panel_StuffHere.PerformLayout();
             this.p_Media.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.p_Forward)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.p_Back)).EndInit();
@@ -191,8 +191,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label title;
         private System.Windows.Forms.NotifyIcon nt1;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panel_StuffHere;
+        private System.Windows.Forms.Label seperator;
         private System.Windows.Forms.PictureBox p_Forward;
         private System.Windows.Forms.PictureBox p_Back;
         private System.Windows.Forms.Panel p_Media;

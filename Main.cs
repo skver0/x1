@@ -77,7 +77,15 @@ namespace x1
 
         private void Main_Load(object sender, EventArgs e)
         {
-            Location = new Point(0, 1040);
+            seperator.Anchor = AnchorStyles.Right;
+            time.Anchor = AnchorStyles.Right;
+            panel_StuffHere.Anchor = AnchorStyles.Right;
+
+            var ScreenHeight = Screen.PrimaryScreen.Bounds.Height;
+            Location = new Point(0, ScreenHeight - 40);
+
+            Width = Screen.PrimaryScreen.Bounds.Width;
+
             t1.Start();
 
             HideTaskBar();
