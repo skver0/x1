@@ -13,5 +13,5 @@ it has epic features!
 - time displayer
 - uh
 - capslock indicator
-- uhhhhhhhhh
+- spotify mediacontrol buttons
 - hElp
