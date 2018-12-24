@@ -3,6 +3,9 @@ A basic taskbar replacer on Windows made in C# .NET
 
 idk it's messy
 
+please report bugs at the issues page or on discord
+skver#6498
+
 vs 17 community
 dotnet 4.6
 
