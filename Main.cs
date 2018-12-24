@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -14,6 +15,9 @@ namespace x1
     public partial class Main : Form
     {
         #region epic dLLimportz
+        [DllImport("user32.dll", SetLastError = true)]
+        private static extern void keybd_event(byte bVk, byte bScan, int dwFlags, int dwExtraInfo);
+
         [DllImport("user32.dll")]
         static extern ushort GetAsyncKeyState(int vKey);
 
@@ -34,7 +38,7 @@ namespace x1
         [DllImport("user32.dll")]
         static extern int GetWindowText(IntPtr hWnd, StringBuilder text, int count);
 
-        
+
         private string GetActiveWindowTitle()
         {
             const int nChars = 256;
@@ -108,7 +112,35 @@ namespace x1
                     nt1.ShowBalloonTip(5, "x1", "capslock disabled", ToolTipIcon.None);
                 }
             }
+
+            Process[] spotify = Process.GetProcessesByName("Spotify");
+
+            if (spotify.Length == 0)
+            {
+                p_Media.Visible = false;
+            }
+            else
+            {
+                p_Media.Visible = true;
+            }
+
         }
         #endregion
+
+        private void p_Forward_Click(object sender, EventArgs e)
+        {
+            var KEYEVENTF_KEYUP = 0x0002;
+            var mediaNextTrack = (byte)Keys.MediaNextTrack;
+            keybd_event(mediaNextTrack, mediaNextTrack, 0, 0);
+            keybd_event(mediaNextTrack, mediaNextTrack, KEYEVENTF_KEYUP, 0);
+        }
+
+        private void p_Back_Click(object sender, EventArgs e)
+        {
+            var KEYEVENTF_KEYUP = 0x0002;
+            var mediaPreviousTrack = (byte)Keys.MediaPreviousTrack;
+            keybd_event(mediaPreviousTrack, mediaPreviousTrack, 0, 0);
+            keybd_event(mediaPreviousTrack, mediaPreviousTrack, KEYEVENTF_KEYUP, 0);
+        }
     }
 }
