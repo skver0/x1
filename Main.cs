@@ -71,29 +71,87 @@ namespace x1
         }
 
         bool helpdialog = false;
-
+        PowerStatus battery = SystemInformation.PowerStatus;
         Help help = new Help();
 
 
         private void Main_Load(object sender, EventArgs e)
         {
+            spotifytrack.Anchor = AnchorStyles.Right;
             seperator.Anchor = AnchorStyles.Right;
+            btry.Anchor = AnchorStyles.Right;
             time.Anchor = AnchorStyles.Right;
             panel_StuffHere.Anchor = AnchorStyles.Right;
-
-            var ScreenHeight = Screen.PrimaryScreen.Bounds.Height;
-            Location = new Point(0, ScreenHeight - 40);
 
             Width = Screen.PrimaryScreen.Bounds.Width;
 
             t1.Start();
 
             HideTaskBar();
+
+            CheckBattery();
+
         }
+
+        void CheckBattery()
+        {
+            int batterynumber = Convert.ToInt32(battery.BatteryLifePercent.ToString("P0").Trim(new Char[] { '%' }));
+            if (battery.BatteryChargeStatus.ToString() != "NoSystemBattery")
+            {
+                if (batterynumber <= 100 && batterynumber >=80)
+                {
+                    btry.Text = "[----]";
+                }
+
+                if (batterynumber <= 80 && batterynumber >= 70)
+                {
+                    btry.Text = "[--- ]";
+                }
+
+                if (batterynumber <= 70 && batterynumber >= 50)
+                {
+                    btry.Text = "[--  ]";
+                }
+
+                if (batterynumber <= 50 && batterynumber >= 20)
+                {
+                    btry.Text = "[-   ]";
+                }
+
+                if (batterynumber <= 20 && batterynumber >= 0)
+                {
+                    btry.Text = "[    ]";
+                }
+
+            }
+            else
+            {
+                spotifytrack.Location = new Point(98, 10);
+                btry.Hide();
+                p_Media.Location = new Point(366, 6);
+            }
+        }
+
+        public string GetSpotifyTrackInfo()
+        {
+            var proc = Process.GetProcessesByName("Spotify").FirstOrDefault(p => !string.IsNullOrWhiteSpace(p.MainWindowTitle));
+            if (string.Equals(proc.MainWindowTitle, "Spotify", StringComparison.InvariantCultureIgnoreCase))
+            {
+                return "       Paused";
+            }
+            return proc.MainWindowTitle;
+        }
+
 
         #region haha im epic
         private void t1_Tick(object sender, EventArgs e)
         {
+            var ScreenHeight = Screen.PrimaryScreen.Bounds.Height;
+            Location = new Point(0, ScreenHeight - 40);
+
+            if (battery.BatteryChargeStatus.ToString() != "NoSystemBattery")
+                CheckBattery();
+
             title.Text = GetActiveWindowTitle();
             time.Text = DateTime.Now.ToString("HH:mm");
 
@@ -126,9 +184,12 @@ namespace x1
             if (spotify.Length == 0)
             {
                 p_Media.Visible = false;
+                spotifytrack.Visible = false;
             }
             else
             {
+                spotifytrack.Text = GetSpotifyTrackInfo();
+                spotifytrack.Visible = true;
                 p_Media.Visible = true;
             }
 
@@ -149,6 +210,11 @@ namespace x1
             var mediaPreviousTrack = (byte)Keys.MediaPreviousTrack;
             keybd_event(mediaPreviousTrack, mediaPreviousTrack, 0, 0);
             keybd_event(mediaPreviousTrack, mediaPreviousTrack, KEYEVENTF_KEYUP, 0);
+        }
+
+        private void btry_MouseHover(object sender, EventArgs e)
+        {
+            ttp.Show(battery.BatteryLifePercent.ToString("P0"), btry);
         }
     }
 }

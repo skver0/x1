@@ -40,7 +40,10 @@
             this.p_Forward = new System.Windows.Forms.PictureBox();
             this.p_Back = new System.Windows.Forms.PictureBox();
             this.seperator = new System.Windows.Forms.Label();
+            this.btry = new System.Windows.Forms.Label();
+            this.spotifytrack = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.ttp = new System.Windows.Forms.ToolTip(this.components);
             this.panel_StuffHere.SuspendLayout();
             this.p_Media.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.p_Forward)).BeginInit();
@@ -57,7 +60,7 @@
             this.time.AutoSize = true;
             this.time.Font = new System.Drawing.Font("Consolas", 13F);
             this.time.ForeColor = System.Drawing.Color.White;
-            this.time.Location = new System.Drawing.Point(671, 9);
+            this.time.Location = new System.Drawing.Point(441, 8);
             this.time.Name = "time";
             this.time.Size = new System.Drawing.Size(60, 22);
             this.time.TabIndex = 0;
@@ -93,18 +96,21 @@
             // 
             // panel_StuffHere
             // 
+            this.panel_StuffHere.Controls.Add(this.time);
             this.panel_StuffHere.Controls.Add(this.p_Media);
             this.panel_StuffHere.Controls.Add(this.seperator);
-            this.panel_StuffHere.Location = new System.Drawing.Point(515, 1);
+            this.panel_StuffHere.Controls.Add(this.btry);
+            this.panel_StuffHere.Controls.Add(this.spotifytrack);
+            this.panel_StuffHere.Location = new System.Drawing.Point(232, 1);
             this.panel_StuffHere.Name = "panel_StuffHere";
-            this.panel_StuffHere.Size = new System.Drawing.Size(162, 38);
+            this.panel_StuffHere.Size = new System.Drawing.Size(509, 38);
             this.panel_StuffHere.TabIndex = 4;
             // 
             // p_Media
             // 
             this.p_Media.Controls.Add(this.p_Forward);
             this.p_Media.Controls.Add(this.p_Back);
-            this.p_Media.Location = new System.Drawing.Point(78, 5);
+            this.p_Media.Location = new System.Drawing.Point(300, 7);
             this.p_Media.Name = "p_Media";
             this.p_Media.Size = new System.Drawing.Size(64, 28);
             this.p_Media.TabIndex = 8;
@@ -137,11 +143,36 @@
             this.seperator.AutoSize = true;
             this.seperator.Font = new System.Drawing.Font("Consolas", 13F);
             this.seperator.ForeColor = System.Drawing.Color.White;
-            this.seperator.Location = new System.Drawing.Point(140, 8);
+            this.seperator.Location = new System.Drawing.Point(424, 8);
             this.seperator.Name = "seperator";
             this.seperator.Size = new System.Drawing.Size(20, 22);
             this.seperator.TabIndex = 5;
             this.seperator.Text = "|";
+            // 
+            // btry
+            // 
+            this.btry.AutoSize = true;
+            this.btry.Font = new System.Drawing.Font("Consolas", 13F);
+            this.btry.ForeColor = System.Drawing.Color.White;
+            this.btry.Location = new System.Drawing.Point(361, 8);
+            this.btry.Name = "btry";
+            this.btry.Size = new System.Drawing.Size(70, 22);
+            this.btry.TabIndex = 9;
+            this.btry.Text = "[----]";
+            this.btry.MouseHover += new System.EventHandler(this.btry_MouseHover);
+            // 
+            // spotifytrack
+            // 
+            this.spotifytrack.Font = new System.Drawing.Font("Consolas", 12F);
+            this.spotifytrack.ForeColor = System.Drawing.Color.White;
+            this.spotifytrack.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.spotifytrack.Location = new System.Drawing.Point(33, 11);
+            this.spotifytrack.Margin = new System.Windows.Forms.Padding(0);
+            this.spotifytrack.Name = "spotifytrack";
+            this.spotifytrack.Size = new System.Drawing.Size(263, 19);
+            this.spotifytrack.TabIndex = 10;
+            this.spotifytrack.Text = "track";
+            this.spotifytrack.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label4
             // 
@@ -160,15 +191,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.ClientSize = new System.Drawing.Size(739, 40);
-            this.Controls.Add(this.title);
-            this.Controls.Add(this.time);
             this.Controls.Add(this.panel_StuffHere);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label4);
+            this.Controls.Add(this.title);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Main";
+            this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "x1";
@@ -197,6 +228,9 @@
         private System.Windows.Forms.PictureBox p_Back;
         private System.Windows.Forms.Panel p_Media;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label btry;
+        private System.Windows.Forms.Label spotifytrack;
+        private System.Windows.Forms.ToolTip ttp;
     }
 }
 
