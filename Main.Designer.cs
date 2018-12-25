@@ -65,6 +65,23 @@
             this.time.Size = new System.Drawing.Size(60, 22);
             this.time.TabIndex = 0;
             this.time.Text = "00:00";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             // 
             // label2
             // 

@@ -135,10 +135,13 @@ namespace x1
         public string GetSpotifyTrackInfo()
         {
             var proc = Process.GetProcessesByName("Spotify").FirstOrDefault(p => !string.IsNullOrWhiteSpace(p.MainWindowTitle));
+
+            if (proc == null)
+                return "";
+
             if (string.Equals(proc.MainWindowTitle, "Spotify", StringComparison.InvariantCultureIgnoreCase))
-            {
                 return "       Paused";
-            }
+            
             return proc.MainWindowTitle;
         }
 
