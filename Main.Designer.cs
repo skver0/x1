@@ -32,7 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.t1 = new System.Windows.Forms.Timer(this.components);
             this.time = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.x1logo = new System.Windows.Forms.Label();
             this.title = new System.Windows.Forms.Label();
             this.nt1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.panel_StuffHere = new System.Windows.Forms.Panel();
@@ -44,6 +44,7 @@
             this.spotifytrack = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.ttp = new System.Windows.Forms.ToolTip(this.components);
+            this.startbutton = new System.Windows.Forms.Panel();
             this.panel_StuffHere.SuspendLayout();
             this.p_Media.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.p_Forward)).BeginInit();
@@ -67,17 +68,17 @@
             this.time.Text = "00:00";
             this.time.DoubleClick += new System.EventHandler(this.time_DoubleClick);
             // 
-            // label2
+            // x1logo
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Consolas", 13F);
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(12, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(30, 22);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "x1";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.x1logo.AutoSize = true;
+            this.x1logo.Font = new System.Drawing.Font("Consolas", 13F);
+            this.x1logo.ForeColor = System.Drawing.Color.White;
+            this.x1logo.Location = new System.Drawing.Point(9, 9);
+            this.x1logo.Name = "x1logo";
+            this.x1logo.Size = new System.Drawing.Size(30, 22);
+            this.x1logo.TabIndex = 1;
+            this.x1logo.Text = "x1";
+            this.x1logo.Click += new System.EventHandler(this.x1logo_Click);
             // 
             // title
             // 
@@ -187,6 +188,14 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "|";
             // 
+            // startbutton
+            // 
+            this.startbutton.Location = new System.Drawing.Point(0, 1);
+            this.startbutton.Name = "startbutton";
+            this.startbutton.Size = new System.Drawing.Size(42, 38);
+            this.startbutton.TabIndex = 7;
+            this.startbutton.Click += new System.EventHandler(this.startbutton_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -194,9 +203,10 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.ClientSize = new System.Drawing.Size(739, 40);
             this.Controls.Add(this.panel_StuffHere);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.x1logo);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.title);
+            this.Controls.Add(this.startbutton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -221,7 +231,7 @@
 
         private System.Windows.Forms.Timer t1;
         private System.Windows.Forms.Label time;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label x1logo;
         private System.Windows.Forms.Label title;
         private System.Windows.Forms.NotifyIcon nt1;
         private System.Windows.Forms.Panel panel_StuffHere;
@@ -233,6 +243,7 @@
         private System.Windows.Forms.Label btry;
         private System.Windows.Forms.Label spotifytrack;
         private System.Windows.Forms.ToolTip ttp;
+        private System.Windows.Forms.Panel startbutton;
     }
 }
 
