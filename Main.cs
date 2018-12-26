@@ -93,6 +93,7 @@ namespace x1
         bool helpdialog = false;
         PowerStatus battery = SystemInformation.PowerStatus;
         Help help = new Help();
+        caps caps = new caps();
         publicbool publicbool = new publicbool();
         string appdata = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
 
@@ -220,9 +221,6 @@ namespace x1
                     Location = new Point(0, ScreenHeight - 40);
                 }
             }
-
-
-            caps caps = new caps();
 
             Rectangle window = new Rectangle();
             Rectangle edited = new Rectangle();
