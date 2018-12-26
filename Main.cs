@@ -9,6 +9,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace x1
 {
@@ -92,18 +93,35 @@ namespace x1
         bool helpdialog = false;
         PowerStatus battery = SystemInformation.PowerStatus;
         Help help = new Help();
-
+        string appdata = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
 
         private void Main_Load(object sender, EventArgs e)
         {
-            SetProcessDPIAware();
-            spotifytrack.Anchor = AnchorStyles.Right;
-            seperator.Anchor = AnchorStyles.Right;
-            btry.Anchor = AnchorStyles.Right;
-            time.Anchor = AnchorStyles.Right;
-            panel_StuffHere.Anchor = AnchorStyles.Right;
 
-            Width = Screen.PrimaryScreen.Bounds.Width;
+
+            SetProcessDPIAware();
+
+            if (File.Exists(appdata + "/x1left"))
+            {
+                Width = 62;
+                spotifytrack.Anchor = AnchorStyles.Right;
+                seperator.Anchor = AnchorStyles.Right;
+                btry.Anchor = AnchorStyles.Right;
+                time.Anchor = AnchorStyles.Right;
+                panel_StuffHere.Anchor = AnchorStyles.Right;
+
+                Height = Screen.PrimaryScreen.Bounds.Height;
+            }
+            else
+            {
+                spotifytrack.Anchor = AnchorStyles.Right;
+                seperator.Anchor = AnchorStyles.Right;
+                btry.Anchor = AnchorStyles.Right;
+                time.Anchor = AnchorStyles.Right;
+                panel_StuffHere.Anchor = AnchorStyles.Right;
+
+                Width = Screen.PrimaryScreen.Bounds.Width;
+            }
 
             t1.Start();
 
@@ -183,8 +201,25 @@ namespace x1
         #region haha im epic
         private void t1_Tick(object sender, EventArgs e)
         {
-            var ScreenHeight = Screen.PrimaryScreen.Bounds.Height;
-            Location = new Point(0, ScreenHeight - 40);
+            if (File.Exists(appdata + "/x1left"))
+            {
+                // idfk how to do it its hard man please make a pull request thanks
+                Location = new Point(0, 0);
+            }
+
+            if (File.Exists(appdata + "/x1top"))
+            {
+                Location = new Point(0, 0);
+            }
+            else
+            {
+                if (!File.Exists(appdata + "/x1left"))
+                {
+                    var ScreenHeight = Screen.PrimaryScreen.Bounds.Height;
+                    Location = new Point(0, ScreenHeight - 40);
+                }
+            }
+
 
             Rectangle window = new Rectangle();
             Rectangle edited = new Rectangle();
@@ -199,7 +234,7 @@ namespace x1
             //label1.Text = Convert.ToString(GetDesktopWindow());
 
             //this is so fucking retarded that i dont even know why it doesnt work only if i add a retarded bool that checks every process this is anoying. install gentoo
-            
+
             if (edited.Height >= Screen.PrimaryScreen.Bounds.Height && edited.Width >= Screen.PrimaryScreen.Bounds.Width && GetActiveWindowTitle() != "" && GetForegroundWindow() != null && GetForegroundWindow() != GetShellWindow() && GetForegroundWindow() != GetDesktopWindow() && !IsOnDesktop())
             {
                 Hide();
