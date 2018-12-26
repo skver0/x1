@@ -15,6 +15,16 @@ namespace x1
     public partial class Main : Form
     {
         #region epic dLLimportz
+        [DllImport("user32.dll")]
+        private static extern bool SetProcessDPIAware();
+
+        [DllImport("user32.dll")]
+        static extern IntPtr GetForegroundWindow();
+
+        [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        static extern bool GetWindowRect(IntPtr hWnd, out Rectangle lpRect);
+
         [DllImport("user32.dll", SetLastError = true)]
         private static extern void keybd_event(byte bVk, byte bScan, int dwFlags, int dwExtraInfo);
 
@@ -32,8 +42,6 @@ namespace x1
         [DllImport("user32.dll")]
         public static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
 
-        [DllImport("user32.dll")]
-        static extern IntPtr GetForegroundWindow();
 
         [DllImport("user32.dll")]
         static extern int GetWindowText(IntPtr hWnd, StringBuilder text, int count);
@@ -77,6 +85,7 @@ namespace x1
 
         private void Main_Load(object sender, EventArgs e)
         {
+            SetProcessDPIAware();
             spotifytrack.Anchor = AnchorStyles.Right;
             seperator.Anchor = AnchorStyles.Right;
             btry.Anchor = AnchorStyles.Right;
@@ -152,8 +161,27 @@ namespace x1
             var ScreenHeight = Screen.PrimaryScreen.Bounds.Height;
             Location = new Point(0, ScreenHeight - 40);
 
+            Rectangle window = new Rectangle();
+            Rectangle edited = new Rectangle();
+            GetWindowRect(GetForegroundWindow(), out window);
+
+            edited.Width = window.Width - window.X;
+            edited.Height = window.Height - window.Y;
+
+            //totally not for debugging
+            //label1.Text = Convert.ToString(edited.Width) + "E" + Convert.ToString(edited.Height) + " " + Convert.ToString(window.Height) + "W" + Convert.ToString(window.Height) + " " + Convert.ToString(window.X) + "X" + Convert.ToString(window.Y);
+
+            if (edited.Height >= Screen.PrimaryScreen.Bounds.Height && edited.Width >= Screen.PrimaryScreen.Bounds.Width)
+            {
+                Hide();
+            }
+            else
+            {
+                Show();
+            }
+
             if (battery.BatteryChargeStatus.ToString() != "NoSystemBattery")
-                CheckBattery();
+            CheckBattery();
 
             title.Text = GetActiveWindowTitle();
             time.Text = DateTime.Now.ToString("HH:mm");
