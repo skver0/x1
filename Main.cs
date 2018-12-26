@@ -15,6 +15,17 @@ namespace x1
     public partial class Main : Form
     {
         #region epic dLLimportz
+        /// <summary>
+        /// Most of this is from pinvoke.net lol
+        /// </summary>
+        /// <returns></returns>
+
+        [DllImport("user32.dll")]
+        static extern IntPtr GetShellWindow();
+
+        [DllImport("user32.dll", SetLastError = false)]
+        static extern IntPtr GetDesktopWindow();
+
         [DllImport("user32.dll")]
         private static extern bool SetProcessDPIAware();
 
@@ -107,7 +118,7 @@ namespace x1
             int batterynumber = Convert.ToInt32(battery.BatteryLifePercent.ToString("P0").Trim(new Char[] { '%' }));
             if (battery.BatteryChargeStatus.ToString() != "NoSystemBattery")
             {
-                if (batterynumber <= 100 && batterynumber >=80)
+                if (batterynumber <= 100 && batterynumber >= 80)
                 {
                     btry.Text = "[----]";
                 }
@@ -150,10 +161,24 @@ namespace x1
 
             if (string.Equals(proc.MainWindowTitle, "Spotify", StringComparison.InvariantCultureIgnoreCase))
                 return "       Paused";
-            
+
             return proc.MainWindowTitle;
         }
 
+        bool IsOnDesktop()
+        {
+            Process[] proc = Process.GetProcesses();
+            IntPtr current = GetForegroundWindow();
+
+            foreach (Process x in proc)
+            {
+                if (x.MainWindowHandle == current)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
 
         #region haha im epic
         private void t1_Tick(object sender, EventArgs e)
@@ -170,8 +195,12 @@ namespace x1
 
             //totally not for debugging
             //label1.Text = Convert.ToString(edited.Width) + "E" + Convert.ToString(edited.Height) + " " + Convert.ToString(window.Height) + "W" + Convert.ToString(window.Height) + " " + Convert.ToString(window.X) + "X" + Convert.ToString(window.Y);
+            //label1.Text = Convert.ToString(GetForegroundWindow());
+            //label1.Text = Convert.ToString(GetDesktopWindow());
 
-            if (edited.Height >= Screen.PrimaryScreen.Bounds.Height && edited.Width >= Screen.PrimaryScreen.Bounds.Width)
+            //this is so fucking retarded that i dont even know why it doesnt work only if i add a retarded bool that checks every process this is anoying. install gentoo
+            
+            if (edited.Height >= Screen.PrimaryScreen.Bounds.Height && edited.Width >= Screen.PrimaryScreen.Bounds.Width && GetActiveWindowTitle() != "" && GetForegroundWindow() != null && GetForegroundWindow() != GetShellWindow() && GetForegroundWindow() != GetDesktopWindow() && !IsOnDesktop())
             {
                 Hide();
             }
@@ -181,7 +210,7 @@ namespace x1
             }
 
             if (battery.BatteryChargeStatus.ToString() != "NoSystemBattery")
-            CheckBattery();
+                CheckBattery();
 
             title.Text = GetActiveWindowTitle();
             time.Text = DateTime.Now.ToString("HH:mm");
