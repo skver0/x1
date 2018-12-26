@@ -74,7 +74,7 @@
             this.x1logo.ForeColor = System.Drawing.Color.White;
             this.x1logo.Location = new System.Drawing.Point(0, 0);
             this.x1logo.Name = "x1logo";
-            this.x1logo.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.x1logo.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.x1logo.Size = new System.Drawing.Size(42, 40);
             this.x1logo.TabIndex = 1;
             this.x1logo.Text = "x1";
