@@ -63,7 +63,7 @@
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(263, 279);
             this.Name = "";
-            this.ShowIcon = false;
+            this.ShowIcon = false;  
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "";

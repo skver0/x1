@@ -26,7 +26,7 @@ namespace x1
             if (IsKeyLocked(Keys.CapsLock))
             {
                 Opacity = 1;
-                capsindicator.Text = "caps on";
+                capsindicator.Text = "caps on"; 
             }
             else
             {
@@ -43,8 +43,7 @@ namespace x1
             {
                 Opacity -= 0.01;
             }
-            else
-            {
+            else {
                 publicbool.visible = false;
                 Close();
                 t1.Stop();

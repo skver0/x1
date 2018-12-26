@@ -84,7 +84,7 @@
             this.title.AutoSize = true;
             this.title.Font = new System.Drawing.Font("Consolas", 10F);
             this.title.ForeColor = System.Drawing.Color.White;
-            this.title.Location = new System.Drawing.Point(52, 12);
+            this.title.Location = new System.Drawing.Point(53, 12);
             this.title.Name = "title";
             this.title.Size = new System.Drawing.Size(48, 17);
             this.title.TabIndex = 2;
