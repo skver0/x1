@@ -94,7 +94,7 @@ namespace x1
                 using (StreamReader readdata = File.OpenText(appdata + "/x1custom")){
                     checklenght = readdata.ReadLine();
                 }
-                if (checklenght.Length < 5 && checklenght.Length > 0)
+                if (checklenght.Length < 3 && checklenght.Length > 0)
                 {
                     x1logo.Text = checklenght;
                 }
