@@ -93,6 +93,7 @@ namespace x1
         bool helpdialog = false;
         PowerStatus battery = SystemInformation.PowerStatus;
         Help help = new Help();
+        publicbool publicbool = new publicbool();
         string appdata = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
 
         private void Main_Load(object sender, EventArgs e)
@@ -266,14 +267,8 @@ namespace x1
 
             if (IsKeyPushedDown(Keys.CapsLock))
             {
-                if (IsKeyLocked(Keys.CapsLock))
+                if (!publicbool.visible)
                 {
-                   // nt1.ShowBalloonTip(5, "x1", "capslock enabled", ToolTipIcon.None);
-                    caps.Show();
-                }
-                else
-                {
-                    //nt1.ShowBalloonTip(5, "x1", "capslock disabled", ToolTipIcon.None);
                     caps.Show();
                 }
             }
