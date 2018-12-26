@@ -212,12 +212,14 @@ namespace x1
 
             if (File.Exists(appdata + "/x1top"))
             {
+                Width = Screen.PrimaryScreen.Bounds.Width;
                 Location = new Point(0, 0);
             }
             else
             {
                 if (!File.Exists(appdata + "/x1left"))
                 {
+                    Width = Screen.PrimaryScreen.Bounds.Width;
                     var ScreenHeight = Screen.PrimaryScreen.Bounds.Height;
                     Location = new Point(0, ScreenHeight - 40);
                 }
@@ -310,7 +312,12 @@ namespace x1
             ttp.Show(battery.BatteryLifePercent.ToString("P0"), btry);
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void time_DoubleClick(object sender, EventArgs e)
+        {
+            Process.Start("timedate.cpl");
+        }
+
+        private void startbutton_Click(object sender, EventArgs e)
         {
             byte ctrl = 17;
             byte esc = 27;
@@ -320,9 +327,14 @@ namespace x1
             keybd_event(esc, 0, 2, 0);
         }
 
-        private void time_DoubleClick(object sender, EventArgs e)
+        private void x1logo_Click(object sender, EventArgs e)
         {
-            Process.Start("timedate.cpl");
+            byte ctrl = 17;
+            byte esc = 27;
+            keybd_event(ctrl, 0, 0, 0);
+            keybd_event(esc, 0, 0, 0);
+            keybd_event(ctrl, 0, 2, 0);
+            keybd_event(esc, 0, 2, 0);
         }
     }
 }
