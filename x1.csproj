@@ -69,6 +69,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="publicbool.cs" />
     <EmbeddedResource Include="caps.resx">
       <DependentUpon>caps.cs</DependentUpon>
     </EmbeddedResource>

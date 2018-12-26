@@ -17,35 +17,37 @@ namespace x1
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        publicbool publicbool = new publicbool();
         private void caps_Load(object sender, EventArgs e)
         {
-            this.Opacity = 1;
+            TopMost = true;
+            publicbool.visible = true;
+            Opacity = 1;
             if (IsKeyLocked(Keys.CapsLock))
             {
-                label1.Text = "A";
+                Opacity = 1;
+                capsindicator.Text = "caps on";
             }
             else
             {
-                label1.Text = "a";
+                Opacity = 1;
+                capsindicator.Text = "caps off";
             }
-            timer1.Start();
-            timer1.Interval = 1;
+            t1.Start();
+            t1.Interval = 1;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (this.Opacity > 0)
+            if (Opacity > 0)
             {
-                this.Opacity -= 0.01;
+                Opacity -= 0.01;
             }
-            else {
-                this.Close();
-                timer1.Stop();
+            else
+            {
+                publicbool.visible = false;
+                Close();
+                t1.Stop();
             }
         }
     }

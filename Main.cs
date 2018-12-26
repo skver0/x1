@@ -9,6 +9,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace x1
 {
@@ -93,17 +94,36 @@ namespace x1
         PowerStatus battery = SystemInformation.PowerStatus;
         Help help = new Help();
 
+        publicbool publicbool = new publicbool();
+        string appdata = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
 
         private void Main_Load(object sender, EventArgs e)
         {
-            SetProcessDPIAware();
-            spotifytrack.Anchor = AnchorStyles.Right;
-            seperator.Anchor = AnchorStyles.Right;
-            btry.Anchor = AnchorStyles.Right;
-            time.Anchor = AnchorStyles.Right;
-            panel_StuffHere.Anchor = AnchorStyles.Right;
 
-            Width = Screen.PrimaryScreen.Bounds.Width;
+
+            SetProcessDPIAware();
+
+            if (File.Exists(appdata + "/x1left"))
+            {
+                Width = 62;
+                spotifytrack.Anchor = AnchorStyles.Right;
+                seperator.Anchor = AnchorStyles.Right;
+                btry.Anchor = AnchorStyles.Right;
+                time.Anchor = AnchorStyles.Right;
+                panel_StuffHere.Anchor = AnchorStyles.Right;
+
+                Height = Screen.PrimaryScreen.Bounds.Height;
+            }
+            else
+            {
+                spotifytrack.Anchor = AnchorStyles.Right;
+                seperator.Anchor = AnchorStyles.Right;
+                btry.Anchor = AnchorStyles.Right;
+                time.Anchor = AnchorStyles.Right;
+                panel_StuffHere.Anchor = AnchorStyles.Right;
+
+                Width = Screen.PrimaryScreen.Bounds.Width;
+            }
 
             t1.Start();
 
@@ -183,10 +203,25 @@ namespace x1
         #region haha im epic
         private void t1_Tick(object sender, EventArgs e)
         {
-            var ScreenHeight = Screen.PrimaryScreen.Bounds.Height;
-            Location = new Point(0, ScreenHeight - 40);
-
             caps caps = new caps();
+            if (File.Exists(appdata + "/x1left"))
+            {
+                // idfk how to do it its hard man please make a pull request thanks
+                Location = new Point(0, 0);
+            }
+
+            if (File.Exists(appdata + "/x1top"))
+            {
+                Location = new Point(0, 0);
+            }
+            else
+            {
+                if (!File.Exists(appdata + "/x1left"))
+                {
+                    var ScreenHeight = Screen.PrimaryScreen.Bounds.Height;
+                    Location = new Point(0, ScreenHeight - 40);
+                }
+            }
 
             Rectangle window = new Rectangle();
             Rectangle edited = new Rectangle();
@@ -201,7 +236,7 @@ namespace x1
             //label1.Text = Convert.ToString(GetDesktopWindow());
 
             //this is so fucking retarded that i dont even know why it doesnt work only if i add a retarded bool that checks every process this is anoying. install gentoo
-            
+
             if (edited.Height >= Screen.PrimaryScreen.Bounds.Height && edited.Width >= Screen.PrimaryScreen.Bounds.Width && GetActiveWindowTitle() != "" && GetForegroundWindow() != null && GetForegroundWindow() != GetShellWindow() && GetForegroundWindow() != GetDesktopWindow() && !IsOnDesktop())
             {
                 Hide();
@@ -231,14 +266,8 @@ namespace x1
 
             if (IsKeyPushedDown(Keys.CapsLock))
             {
-                if (IsKeyLocked(Keys.CapsLock))
+                if (!publicbool.visible)
                 {
-                   // nt1.ShowBalloonTip(5, "x1", "capslock enabled", ToolTipIcon.None);
-                    caps.Show();
-                }
-                else
-                {
-                    //nt1.ShowBalloonTip(5, "x1", "capslock disabled", ToolTipIcon.None);
                     caps.Show();
                 }
             }
@@ -279,6 +308,21 @@ namespace x1
         private void btry_MouseHover(object sender, EventArgs e)
         {
             ttp.Show(battery.BatteryLifePercent.ToString("P0"), btry);
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            byte ctrl = 17;
+            byte esc = 27;
+            keybd_event(ctrl, 0, 0, 0);
+            keybd_event(esc, 0, 0, 0);
+            keybd_event(ctrl, 0, 2, 0);
+            keybd_event(esc, 0, 2, 0);
+        }
+
+        private void time_DoubleClick(object sender, EventArgs e)
+        {
+            Process.Start("timedate.cpl");
         }
     }
 }
