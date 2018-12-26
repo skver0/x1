@@ -309,5 +309,20 @@ namespace x1
         {
             ttp.Show(battery.BatteryLifePercent.ToString("P0"), btry);
         }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            byte ctrl = 17;
+            byte esc = 27;
+            keybd_event(ctrl, 0, 0, 0);
+            keybd_event(esc, 0, 0, 0);
+            keybd_event(ctrl, 0, 2, 0);
+            keybd_event(esc, 0, 2, 0);
+        }
+
+        private void time_DoubleClick(object sender, EventArgs e)
+        {
+            Process.Start("timedate.cpl");
+        }
     }
 }

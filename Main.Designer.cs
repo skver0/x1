@@ -65,6 +65,7 @@
             this.time.Size = new System.Drawing.Size(60, 22);
             this.time.TabIndex = 0;
             this.time.Text = "00:00";
+            this.time.DoubleClick += new System.EventHandler(this.time_DoubleClick);
             // 
             // label2
             // 
@@ -76,6 +77,7 @@
             this.label2.Size = new System.Drawing.Size(30, 22);
             this.label2.TabIndex = 1;
             this.label2.Text = "x1";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // title
             // 
