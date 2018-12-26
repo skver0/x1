@@ -11,3 +11,5 @@ Features
 - Time
 - Spotify implementation (Current song, Skip/Back)
 - Laptop battery indicator
+
+btw Magyar Szoftver ™
