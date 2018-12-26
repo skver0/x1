@@ -78,5 +78,21 @@ namespace x1
             {
             }
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (File.Exists(appdata + "/x1custom")) {
+                File.Delete(appdata + "/x1custom");
+                using (StreamWriter storedata = File.CreateText(appdata + "/x1custom"))
+                {
+                    storedata.WriteLine(textBox1.Text);
+                }
+            } else {
+                using (StreamWriter storedata = File.CreateText(appdata + "/x1custom"))
+                {
+                    storedata.WriteLine(textBox1.Text);
+                }
+            }
+        }
     }
 }

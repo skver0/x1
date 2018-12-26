@@ -31,13 +31,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -73,16 +75,6 @@
             this.panel1.Size = new System.Drawing.Size(278, 86);
             this.panel1.TabIndex = 2;
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Arial", 8F);
-            this.label6.Location = new System.Drawing.Point(238, 390);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(64, 14);
-            this.label6.TabIndex = 3;
-            this.label6.Text = "x1 by skver";
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -101,15 +93,58 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "open help dialog = f7";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Arial", 8F);
+            this.label6.Location = new System.Drawing.Point(238, 390);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(64, 14);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "x1 by skver";
+            // 
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.label7);
+            this.panel2.Controls.Add(this.textBox1);
             this.panel2.Controls.Add(this.checkBox2);
             this.panel2.Controls.Add(this.checkBox1);
             this.panel2.Location = new System.Drawing.Point(12, 181);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(278, 205);
             this.panel2.TabIndex = 3;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Arial", 10F);
+            this.label7.Location = new System.Drawing.Point(121, 68);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(133, 16);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "Custom taskbar text";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(15, 67);
+            this.textBox1.MaxLength = 4;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 2;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Font = new System.Drawing.Font("Arial", 10F);
+            this.checkBox2.Location = new System.Drawing.Point(15, 41);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(92, 20);
+            this.checkBox2.TabIndex = 1;
+            this.checkBox2.Text = "bar on top";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
             // checkBox1
             // 
@@ -133,18 +168,6 @@
             this.label4.Size = new System.Drawing.Size(62, 18);
             this.label4.TabIndex = 4;
             this.label4.Text = "settings";
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Font = new System.Drawing.Font("Arial", 10F);
-            this.checkBox2.Location = new System.Drawing.Point(15, 41);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(92, 20);
-            this.checkBox2.TabIndex = 1;
-            this.checkBox2.Text = "bar on top";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
             // Help
             // 
@@ -189,5 +212,7 @@
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.Label label7;
+        public System.Windows.Forms.TextBox textBox1;
     }
 }
