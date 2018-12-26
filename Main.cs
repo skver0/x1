@@ -93,7 +93,7 @@ namespace x1
         bool helpdialog = false;
         PowerStatus battery = SystemInformation.PowerStatus;
         Help help = new Help();
-        caps caps = new caps();
+
         publicbool publicbool = new publicbool();
         string appdata = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
 
@@ -203,6 +203,7 @@ namespace x1
         #region haha im epic
         private void t1_Tick(object sender, EventArgs e)
         {
+            caps caps = new caps();
             if (File.Exists(appdata + "/x1left"))
             {
                 // idfk how to do it its hard man please make a pull request thanks

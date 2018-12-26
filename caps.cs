@@ -20,6 +20,7 @@ namespace x1
         publicbool publicbool = new publicbool();
         private void caps_Load(object sender, EventArgs e)
         {
+            TopMost = true;
             publicbool.visible = true;
             Opacity = 1;
             if (IsKeyLocked(Keys.CapsLock))
