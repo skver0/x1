@@ -186,6 +186,8 @@ namespace x1
             var ScreenHeight = Screen.PrimaryScreen.Bounds.Height;
             Location = new Point(0, ScreenHeight - 40);
 
+            caps caps = new caps();
+
             Rectangle window = new Rectangle();
             Rectangle edited = new Rectangle();
             GetWindowRect(GetForegroundWindow(), out window);
@@ -231,11 +233,13 @@ namespace x1
             {
                 if (IsKeyLocked(Keys.CapsLock))
                 {
-                    nt1.ShowBalloonTip(5, "x1", "capslock enabled", ToolTipIcon.None);
+                   // nt1.ShowBalloonTip(5, "x1", "capslock enabled", ToolTipIcon.None);
+                    caps.Show();
                 }
                 else
                 {
-                    nt1.ShowBalloonTip(5, "x1", "capslock disabled", ToolTipIcon.None);
+                    //nt1.ShowBalloonTip(5, "x1", "capslock disabled", ToolTipIcon.None);
+                    caps.Show();
                 }
             }
 
