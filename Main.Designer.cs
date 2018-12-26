@@ -49,6 +49,7 @@
             this.p_Media.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.p_Forward)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.p_Back)).BeginInit();
+            this.startbutton.SuspendLayout();
             this.SuspendLayout();
             // 
             // t1
@@ -70,26 +71,28 @@
             // 
             // x1logo
             // 
-            this.x1logo.AutoSize = true;
-            this.x1logo.Font = new System.Drawing.Font("Consolas", 13F);
+            this.x1logo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.x1logo.Font = new System.Drawing.Font("Consolas", 10F);
             this.x1logo.ForeColor = System.Drawing.Color.White;
-            this.x1logo.Location = new System.Drawing.Point(9, 9);
+            this.x1logo.Location = new System.Drawing.Point(0, 0);
             this.x1logo.Name = "x1logo";
-            this.x1logo.Size = new System.Drawing.Size(30, 22);
+            this.x1logo.Size = new System.Drawing.Size(42, 40);
             this.x1logo.TabIndex = 1;
             this.x1logo.Text = "x1";
+            this.x1logo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.x1logo.Click += new System.EventHandler(this.x1logo_Click);
             // 
             // title
             // 
-            this.title.AutoSize = true;
+            this.title.Dock = System.Windows.Forms.DockStyle.Left;
             this.title.Font = new System.Drawing.Font("Consolas", 10F);
             this.title.ForeColor = System.Drawing.Color.White;
-            this.title.Location = new System.Drawing.Point(53, 12);
+            this.title.Location = new System.Drawing.Point(62, 0);
             this.title.Name = "title";
-            this.title.Size = new System.Drawing.Size(48, 17);
+            this.title.Size = new System.Drawing.Size(65535, 40);
             this.title.TabIndex = 2;
             this.title.Text = "title";
+            this.title.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // nt1
             // 
@@ -179,20 +182,23 @@
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
+            this.label4.Dock = System.Windows.Forms.DockStyle.Left;
             this.label4.Font = new System.Drawing.Font("Consolas", 13F);
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(36, 9);
+            this.label4.Location = new System.Drawing.Point(42, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(20, 22);
+            this.label4.Size = new System.Drawing.Size(20, 40);
             this.label4.TabIndex = 6;
             this.label4.Text = "|";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // startbutton
             // 
-            this.startbutton.Location = new System.Drawing.Point(0, 1);
+            this.startbutton.Controls.Add(this.x1logo);
+            this.startbutton.Dock = System.Windows.Forms.DockStyle.Left;
+            this.startbutton.Location = new System.Drawing.Point(0, 0);
             this.startbutton.Name = "startbutton";
-            this.startbutton.Size = new System.Drawing.Size(42, 38);
+            this.startbutton.Size = new System.Drawing.Size(42, 40);
             this.startbutton.TabIndex = 7;
             this.startbutton.Click += new System.EventHandler(this.startbutton_Click);
             // 
@@ -203,9 +209,8 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.ClientSize = new System.Drawing.Size(739, 40);
             this.Controls.Add(this.panel_StuffHere);
-            this.Controls.Add(this.x1logo);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.title);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.startbutton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
@@ -222,8 +227,8 @@
             this.p_Media.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.p_Forward)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.p_Back)).EndInit();
+            this.startbutton.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

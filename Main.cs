@@ -88,7 +88,24 @@ namespace x1
         public Main()
         {
             InitializeComponent();
-        }
+            if (File.Exists(appdata + "/x1custom"))
+            {
+                string checklenght;
+                using (StreamReader readdata = File.OpenText(appdata + "/x1custom")){
+                    checklenght = readdata.ReadLine();
+                }
+                if (checklenght.Length < 5 && checklenght.Length > 0)
+                {
+                    x1logo.Text = checklenght;
+                }
+                else {
+                    x1logo.Text = "x1";
+                }
+                x1logo.TextAlign = ContentAlignment.MiddleCenter;
+            } else {
+                x1logo.Text = "x1";
+            }
+            }
 
         bool helpdialog = false;
         PowerStatus battery = SystemInformation.PowerStatus;
