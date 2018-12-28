@@ -94,5 +94,46 @@ namespace x1
                 }
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            colorselect.ShowDialog();
+            colorpicker.BackColor = colorselect.Color;
+            if (File.Exists(appdata + "/x1color"))
+            {
+                File.Delete(appdata + "/x1color");
+                using (StreamWriter storedata = File.CreateText(appdata + "/x1color"))
+                {
+                    storedata.WriteLine(colorselect.Color.ToArgb().ToString());
+                }
+            }
+            else
+            {
+                using (StreamWriter storedata = File.CreateText(appdata + "/x1color"))
+                {
+                    storedata.WriteLine(colorselect.Color.ToArgb().ToString());
+                }
+            }
+        }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            opcatiyindicator.Text = setopacity.Value.ToString() + "% Opacity";
+            if (File.Exists(appdata + "/x1opacity"))
+            {
+                File.Delete(appdata + "/x1opacity");
+                using (StreamWriter storedata = File.CreateText(appdata + "/x1opacity"))
+                {
+                    storedata.WriteLine(setopacity.Value.ToString());
+                }
+            }
+            else
+            {
+                using (StreamWriter storedata = File.CreateText(appdata + "/x1opacity"))
+                {
+                    storedata.WriteLine(setopacity.Value.ToString());
+                }
+            }
+        }
     }
-}
+    }

@@ -105,7 +105,24 @@ namespace x1
             } else {
                 x1logo.Text = "x1";
             }
+            if (File.Exists(appdata + "/x1color"))
+            {
+                using (StreamReader readdata = File.OpenText(appdata + "/x1color"))
+                {
+                    
+                    this.BackColor = Color.FromArgb(Convert.ToInt32(readdata.ReadLine()));
+                }
             }
+            if (File.Exists(appdata + "/x1opacity"))
+            {
+                float igen;
+                using (StreamReader readdata = File.OpenText(appdata + "/x1opacity"))
+                {
+                    igen = float.Parse(readdata.ReadLine(), System.Globalization.CultureInfo.InvariantCulture);
+                    this.Opacity = Convert.ToDouble(igen / 100);
+                }
+            }
+        }
 
         bool helpdialog = false;
         PowerStatus battery = SystemInformation.PowerStatus;
