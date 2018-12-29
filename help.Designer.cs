@@ -35,13 +35,19 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.colorselect = new System.Windows.Forms.ColorDialog();
+            this.colorpicker = new System.Windows.Forms.Button();
+            this.setopacity = new System.Windows.Forms.TrackBar();
+            this.opcatiyindicator = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.setopacity)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -106,6 +112,10 @@
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.opcatiyindicator);
+            this.panel2.Controls.Add(this.setopacity);
+            this.panel2.Controls.Add(this.colorpicker);
+            this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.textBox1);
             this.panel2.Controls.Add(this.checkBox2);
@@ -114,6 +124,16 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(278, 205);
             this.panel2.TabIndex = 3;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Arial", 10F);
+            this.label8.Location = new System.Drawing.Point(50, 102);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(94, 16);
+            this.label8.TabIndex = 5;
+            this.label8.Text = "Custom Color";
             // 
             // label7
             // 
@@ -169,6 +189,39 @@
             this.label4.TabIndex = 4;
             this.label4.Text = "settings";
             // 
+            // colorpicker
+            // 
+            this.colorpicker.BackColor = System.Drawing.Color.Transparent;
+            this.colorpicker.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.colorpicker.ForeColor = System.Drawing.Color.Transparent;
+            this.colorpicker.Location = new System.Drawing.Point(15, 93);
+            this.colorpicker.Name = "colorpicker";
+            this.colorpicker.Size = new System.Drawing.Size(30, 30);
+            this.colorpicker.TabIndex = 6;
+            this.colorpicker.UseVisualStyleBackColor = false;
+            this.colorpicker.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // setopacity
+            // 
+            this.setopacity.Location = new System.Drawing.Point(15, 130);
+            this.setopacity.Maximum = 100;
+            this.setopacity.Name = "setopacity";
+            this.setopacity.Size = new System.Drawing.Size(247, 45);
+            this.setopacity.TabIndex = 7;
+            this.setopacity.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.setopacity.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+            // 
+            // opcatiyindicator
+            // 
+            this.opcatiyindicator.AutoSize = true;
+            this.opcatiyindicator.Font = new System.Drawing.Font("Arial", 10F);
+            this.opcatiyindicator.Location = new System.Drawing.Point(99, 147);
+            this.opcatiyindicator.Name = "opcatiyindicator";
+            this.opcatiyindicator.Size = new System.Drawing.Size(78, 16);
+            this.opcatiyindicator.TabIndex = 8;
+            this.opcatiyindicator.Text = "x% Opacity";
+            this.opcatiyindicator.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Help
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
@@ -195,6 +248,7 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.setopacity)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -214,5 +268,10 @@
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.Label label7;
         public System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ColorDialog colorselect;
+        private System.Windows.Forms.Button colorpicker;
+        private System.Windows.Forms.Label opcatiyindicator;
+        private System.Windows.Forms.TrackBar setopacity;
     }
 }
