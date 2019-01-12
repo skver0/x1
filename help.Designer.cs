@@ -35,6 +35,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.opcatiyindicator = new System.Windows.Forms.Label();
+            this.setopacity = new System.Windows.Forms.TrackBar();
+            this.colorpicker = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -42,12 +46,12 @@
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
             this.colorselect = new System.Windows.Forms.ColorDialog();
-            this.colorpicker = new System.Windows.Forms.Button();
-            this.setopacity = new System.Windows.Forms.TrackBar();
-            this.opcatiyindicator = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label9 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.setopacity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -112,6 +116,9 @@
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.label9);
+            this.panel2.Controls.Add(this.numericUpDown1);
+            this.panel2.Controls.Add(this.checkBox3);
             this.panel2.Controls.Add(this.opcatiyindicator);
             this.panel2.Controls.Add(this.setopacity);
             this.panel2.Controls.Add(this.colorpicker);
@@ -125,15 +132,60 @@
             this.panel2.Size = new System.Drawing.Size(278, 205);
             this.panel2.TabIndex = 3;
             // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Font = new System.Drawing.Font("Arial", 10F);
+            this.checkBox3.Location = new System.Drawing.Point(15, 175);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(158, 20);
+            this.checkBox3.TabIndex = 9;
+            this.checkBox3.Text = "show on 2nd monitor";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
+            // 
+            // opcatiyindicator
+            // 
+            this.opcatiyindicator.AutoSize = true;
+            this.opcatiyindicator.Font = new System.Drawing.Font("Arial", 10F);
+            this.opcatiyindicator.Location = new System.Drawing.Point(40, 147);
+            this.opcatiyindicator.Name = "opcatiyindicator";
+            this.opcatiyindicator.Size = new System.Drawing.Size(75, 16);
+            this.opcatiyindicator.TabIndex = 8;
+            this.opcatiyindicator.Text = "x% opacity";
+            this.opcatiyindicator.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // setopacity
+            // 
+            this.setopacity.Location = new System.Drawing.Point(15, 129);
+            this.setopacity.Maximum = 100;
+            this.setopacity.Name = "setopacity";
+            this.setopacity.Size = new System.Drawing.Size(124, 45);
+            this.setopacity.TabIndex = 7;
+            this.setopacity.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.setopacity.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+            // 
+            // colorpicker
+            // 
+            this.colorpicker.BackColor = System.Drawing.Color.Transparent;
+            this.colorpicker.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.colorpicker.ForeColor = System.Drawing.Color.Transparent;
+            this.colorpicker.Location = new System.Drawing.Point(15, 93);
+            this.colorpicker.Name = "colorpicker";
+            this.colorpicker.Size = new System.Drawing.Size(30, 30);
+            this.colorpicker.TabIndex = 6;
+            this.colorpicker.UseVisualStyleBackColor = false;
+            this.colorpicker.Click += new System.EventHandler(this.button1_Click);
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Arial", 10F);
             this.label8.Location = new System.Drawing.Point(50, 102);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(94, 16);
+            this.label8.Size = new System.Drawing.Size(88, 16);
             this.label8.TabIndex = 5;
-            this.label8.Text = "Custom Color";
+            this.label8.Text = "custom color";
             // 
             // label7
             // 
@@ -141,9 +193,9 @@
             this.label7.Font = new System.Drawing.Font("Arial", 10F);
             this.label7.Location = new System.Drawing.Point(121, 68);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(133, 16);
+            this.label7.Size = new System.Drawing.Size(130, 16);
             this.label7.TabIndex = 3;
-            this.label7.Text = "Custom taskbar text";
+            this.label7.Text = "custom taskbar text";
             // 
             // textBox1
             // 
@@ -189,38 +241,28 @@
             this.label4.TabIndex = 4;
             this.label4.Text = "settings";
             // 
-            // colorpicker
+            // numericUpDown1
             // 
-            this.colorpicker.BackColor = System.Drawing.Color.Transparent;
-            this.colorpicker.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.colorpicker.ForeColor = System.Drawing.Color.Transparent;
-            this.colorpicker.Location = new System.Drawing.Point(15, 93);
-            this.colorpicker.Name = "colorpicker";
-            this.colorpicker.Size = new System.Drawing.Size(30, 30);
-            this.colorpicker.TabIndex = 6;
-            this.colorpicker.UseVisualStyleBackColor = false;
-            this.colorpicker.Click += new System.EventHandler(this.button1_Click);
+            this.numericUpDown1.Location = new System.Drawing.Point(161, 129);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(102, 20);
+            this.numericUpDown1.TabIndex = 10;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            40,
+            0,
+            0,
+            0});
+            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
-            // setopacity
+            // label9
             // 
-            this.setopacity.Location = new System.Drawing.Point(15, 130);
-            this.setopacity.Maximum = 100;
-            this.setopacity.Name = "setopacity";
-            this.setopacity.Size = new System.Drawing.Size(247, 45);
-            this.setopacity.TabIndex = 7;
-            this.setopacity.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.setopacity.Scroll += new System.EventHandler(this.trackBar1_Scroll);
-            // 
-            // opcatiyindicator
-            // 
-            this.opcatiyindicator.AutoSize = true;
-            this.opcatiyindicator.Font = new System.Drawing.Font("Arial", 10F);
-            this.opcatiyindicator.Location = new System.Drawing.Point(99, 147);
-            this.opcatiyindicator.Name = "opcatiyindicator";
-            this.opcatiyindicator.Size = new System.Drawing.Size(78, 16);
-            this.opcatiyindicator.TabIndex = 8;
-            this.opcatiyindicator.Text = "x% Opacity";
-            this.opcatiyindicator.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Arial", 10F);
+            this.label9.Location = new System.Drawing.Point(158, 152);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(105, 16);
+            this.label9.TabIndex = 11;
+            this.label9.Text = "taskbar y offset";
             // 
             // Help
             // 
@@ -249,6 +291,7 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.setopacity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -273,5 +316,8 @@
         private System.Windows.Forms.Button colorpicker;
         private System.Windows.Forms.Label opcatiyindicator;
         private System.Windows.Forms.TrackBar setopacity;
+        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
     }
 }

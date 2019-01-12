@@ -84,32 +84,36 @@ namespace x1
             }
         }
         #endregion
-
+        public int offset = 40;
         public Main()
         {
             InitializeComponent();
             if (File.Exists(appdata + "/x1custom"))
             {
                 string checklenght;
-                using (StreamReader readdata = File.OpenText(appdata + "/x1custom")){
+                using (StreamReader readdata = File.OpenText(appdata + "/x1custom"))
+                {
                     checklenght = readdata.ReadLine();
                 }
                 if (checklenght.Length < 3 && checklenght.Length > 0)
                 {
                     x1logo.Text = checklenght;
                 }
-                else {
+                else
+                {
                     x1logo.Text = "x1";
                 }
                 x1logo.TextAlign = ContentAlignment.MiddleCenter;
-            } else {
+            }
+            else
+            {
                 x1logo.Text = "x1";
             }
             if (File.Exists(appdata + "/x1color"))
             {
                 using (StreamReader readdata = File.OpenText(appdata + "/x1color"))
                 {
-                    
+
                     this.BackColor = Color.FromArgb(Convert.ToInt32(readdata.ReadLine()));
                 }
             }
@@ -122,6 +126,13 @@ namespace x1
                     this.Opacity = Convert.ToDouble(igen / 100);
                 }
             }
+            if (File.Exists(appdata + "/x1offset"))
+            {
+                using (StreamReader readdata = File.OpenText(appdata + "/x1offset"))
+                {
+                    offset = Convert.ToInt32(readdata.ReadLine());
+                }          
+            }
         }
 
         bool helpdialog = false;
@@ -130,6 +141,22 @@ namespace x1
 
         publicbool publicbool = new publicbool();
         string appdata = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+
+        public Screen GetSecondaryScreen()
+        {
+            if (Screen.AllScreens.Length == 1)
+            {
+                return null;
+            }
+            foreach (Screen screen in Screen.AllScreens)
+            {
+                if (screen.Primary == false)
+                {
+                    return screen;
+                }
+            }
+            return null;
+        }
 
         private void Main_Load(object sender, EventArgs e)
         {
@@ -150,13 +177,30 @@ namespace x1
             }
             else
             {
-                spotifytrack.Anchor = AnchorStyles.Right;
-                seperator.Anchor = AnchorStyles.Right;
-                btry.Anchor = AnchorStyles.Right;
-                time.Anchor = AnchorStyles.Right;
-                panel_StuffHere.Anchor = AnchorStyles.Right;
+                if (File.Exists(appdata + "/x12nd"))
+                {
+                    spotifytrack.Anchor = AnchorStyles.Right;
+                    seperator.Anchor = AnchorStyles.Right;
+                    btry.Anchor = AnchorStyles.Right;
+                    time.Anchor = AnchorStyles.Right;
+                    panel_StuffHere.Anchor = AnchorStyles.Right;
 
-                Width = Screen.PrimaryScreen.Bounds.Width;
+                    if (Screen.AllScreens.Length > 1)
+                    {
+                        Screen secscreen = GetSecondaryScreen();
+                        Width = secscreen.Bounds.Width;
+                    }
+                }
+                else
+                {
+                    spotifytrack.Anchor = AnchorStyles.Right;
+                    seperator.Anchor = AnchorStyles.Right;
+                    btry.Anchor = AnchorStyles.Right;
+                    time.Anchor = AnchorStyles.Right;
+                    panel_StuffHere.Anchor = AnchorStyles.Right;
+
+                    Width = Screen.PrimaryScreen.Bounds.Width;
+                }
             }
 
             t1.Start();
@@ -246,19 +290,40 @@ namespace x1
 
             if (File.Exists(appdata + "/x1top"))
             {
-                Width = Screen.PrimaryScreen.Bounds.Width;
-                Location = new Point(0, 0);
+                if (File.Exists(appdata + "/x12nd"))
+                {
+                    Width = GetSecondaryScreen().Bounds.Width;
+                    Location = GetSecondaryScreen().WorkingArea.Location;
+                }
+                else
+                {
+                    Width = Screen.PrimaryScreen.Bounds.Width;
+                    Location = new Point(0, 0);
+                }
             }
             else
             {
                 if (!File.Exists(appdata + "/x1left"))
                 {
-                    Width = Screen.PrimaryScreen.Bounds.Width;
-                    var ScreenHeight = Screen.PrimaryScreen.Bounds.Height;
-                    Location = new Point(0, ScreenHeight - 40);
+
+                    if (File.Exists(appdata + "/x12nd"))
+                    {
+                        if (GetSecondaryScreen() != null)
+                        {
+
+                            Width = GetSecondaryScreen().Bounds.Width;
+                            Location = new Point(GetSecondaryScreen().WorkingArea.X, GetSecondaryScreen().Bounds.Height - offset);
+                          //  label1.Text = Convert.ToString(GetSecondaryScreen().WorkingArea.X);
+                        }
+                    }
+                    else
+                    {
+                        Width = Screen.PrimaryScreen.Bounds.Width;
+                        var ScreenHeight = Screen.PrimaryScreen.Bounds.Height;
+                        Location = new Point(0, ScreenHeight - 40);
+                    }
                 }
             }
-
             Rectangle window = new Rectangle();
             Rectangle edited = new Rectangle();
             GetWindowRect(GetForegroundWindow(), out window);
@@ -273,13 +338,31 @@ namespace x1
 
             //this is so fucking retarded that i dont even know why it doesnt work only if i add a retarded bool that checks every process this is anoying. install gentoo
 
-            if (edited.Height >= Screen.PrimaryScreen.Bounds.Height && edited.Width >= Screen.PrimaryScreen.Bounds.Width && GetActiveWindowTitle() != "" && GetForegroundWindow() != null && GetForegroundWindow() != GetShellWindow() && GetForegroundWindow() != GetDesktopWindow() && !IsOnDesktop())
+            if (!File.Exists(appdata + "/x12nd"))
             {
-                Hide();
+                if (edited.Height >= Screen.PrimaryScreen.Bounds.Height && edited.Width >= Screen.PrimaryScreen.Bounds.Width && GetActiveWindowTitle() != "" && GetForegroundWindow() != null && GetForegroundWindow() != GetShellWindow() && GetForegroundWindow() != GetDesktopWindow() && !IsOnDesktop())
+                {
+                    Hide();
+                }
+                else
+                {
+                    Show();
+                }
             }
             else
             {
-                Show();
+                if (GetSecondaryScreen() != null)
+                {
+                    if (edited.Height >= GetSecondaryScreen().Bounds.Height && edited.Width >= GetSecondaryScreen().Bounds.Width && GetActiveWindowTitle() != "" && GetForegroundWindow() != null && GetForegroundWindow() != GetShellWindow() && GetForegroundWindow() != GetDesktopWindow() && !IsOnDesktop())
+                    {
+                        Hide();
+                    }
+                    else
+                    {
+                        Show();
+                    }
+  
+                }
             }
 
             if (battery.BatteryChargeStatus.ToString() != "NoSystemBattery")

@@ -42,8 +42,16 @@ namespace x1
         private void Help_Load(object sender, EventArgs e)
         {
             try
+            { 
+
+              if (File.Exists(appdata + "/x1offset"))
             {
-                if (File.Exists(appdata + "/x1left"))
+                using (StreamReader readdata = File.OpenText(appdata + "/x1offset"))
+                {
+                    numericUpDown1.Value = Convert.ToDecimal(readdata.ReadLine());
+                }
+            }
+            if (File.Exists(appdata + "/x1left"))
                 {
                         checkBox1.Checked = true;
                 }
@@ -51,6 +59,11 @@ namespace x1
                 if (File.Exists(appdata + "/x1top"))
                 {
                     checkBox2.Checked = true;
+                }
+                
+                if (File.Exists(appdata + "/x12nd"))
+                {
+                    checkBox3.Checked = true;
                 }
             }
             catch (Exception ex)
@@ -132,6 +145,37 @@ namespace x1
                 using (StreamWriter storedata = File.CreateText(appdata + "/x1opacity"))
                 {
                     storedata.WriteLine(setopacity.Value.ToString());
+                }
+            }
+        }
+
+        private void checkBox3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox3.Checked)
+            {
+                File.Create(appdata + "/x12nd");
+            }
+            else
+            {
+                File.Delete(appdata + "/x12nd");
+            }
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            if (File.Exists(appdata + "/x1offset"))
+            {
+                File.Delete(appdata + "/x1offset");
+                using (StreamWriter storedata = File.CreateText(appdata + "/x1offset"))
+                {
+                    storedata.WriteLine(numericUpDown1.Value);
+                }
+            }
+            else
+            {
+                using (StreamWriter storedata = File.CreateText(appdata + "/x1offset"))
+                {
+                    storedata.WriteLine(numericUpDown1.Value);
                 }
             }
         }
