@@ -76,15 +76,33 @@ namespace x1
 
         public static void HideTaskBar()
         {
-            m_hTaskBar = FindWindow("Shell_TrayWnd", null);
-
-            if ((int)m_hTaskBar != 0)
+            if (File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "/x12nd"))
             {
-                ShowWindow(m_hTaskBar, 0);
+                m_hTaskBar = FindWindow("Shell_SecondaryTrayWnd", null);
+                if ((int)m_hTaskBar != 0)
+                {
+                    ShowWindow(m_hTaskBar, 0);
+                }
+            }
+            else
+            {
+                m_hTaskBar = FindWindow("Shell_TrayWnd", null);
+                if ((int)m_hTaskBar != 0)
+                {
+                    ShowWindow(m_hTaskBar, 0);
+                }
             }
         }
         #endregion
         public int offset = 40;
+
+        bool helpdialog = false;
+        PowerStatus battery = SystemInformation.PowerStatus;
+        Help help = new Help();
+
+        publicbool publicbool = new publicbool();
+        string appdata = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+
         public Main()
         {
             InitializeComponent();
@@ -135,12 +153,6 @@ namespace x1
             }
         }
 
-        bool helpdialog = false;
-        PowerStatus battery = SystemInformation.PowerStatus;
-        Help help = new Help();
-
-        publicbool publicbool = new publicbool();
-        string appdata = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
 
         public Screen GetSecondaryScreen()
         {
@@ -160,7 +172,6 @@ namespace x1
 
         private void Main_Load(object sender, EventArgs e)
         {
-
 
             SetProcessDPIAware();
 

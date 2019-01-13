@@ -44,6 +44,7 @@
             this.spotifytrack = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.ttp = new System.Windows.Forms.ToolTip(this.components);
+            this.label1 = new System.Windows.Forms.Label();
             this.panel_StuffHere.SuspendLayout();
             this.p_Media.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.p_Forward)).BeginInit();
@@ -101,6 +102,7 @@
             // 
             // panel_StuffHere
             // 
+            this.panel_StuffHere.Controls.Add(this.label1);
             this.panel_StuffHere.Controls.Add(this.time);
             this.panel_StuffHere.Controls.Add(this.p_Media);
             this.panel_StuffHere.Controls.Add(this.seperator);
@@ -191,6 +193,15 @@
             this.label4.Text = "|";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(34, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "label1";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -236,6 +247,7 @@
         private System.Windows.Forms.Label btry;
         private System.Windows.Forms.Label spotifytrack;
         private System.Windows.Forms.ToolTip ttp;
+        private System.Windows.Forms.Label label1;
     }
 }
 
