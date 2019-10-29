@@ -1,4 +1,5 @@
 # x1
+!code is disgusting and has foul langauge in it!
 A basic taskbar replacer on Windows made in C# .NET
 
 Please report bugs at the issues page or on Discord!
